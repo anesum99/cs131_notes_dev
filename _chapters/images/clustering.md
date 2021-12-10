@@ -8,14 +8,14 @@ order: 10 # Lecture number for 2021
 
 
 - [0:  Intro to Segmentation](#Intro to Segmentation )
-- [1: K-Means](#1: K-Means )
-  -[1-1 :](#1-1 : )
-  - [1-2 :](#1-2 :)
-  - [1-3 :](#1-3 : )
+	- [1: K-Means](#1: K-Means )
+	- [1-1 :](#1-1 : )
+	- [1-2 :](#1-2 :)
+	- [1-3 :](#1-3 : )
 - [2: Kmeans++](#2: Kmeans++ )
-  -[2-1:](#2-1: )
-  - [2-2:](#2-2: )
-  - [2-3:](#I2-3:)
+	- [2-1:](#2-1: )
+	- [2-2:](#2-2: )
+	- [2-3:](#I2-3:)
 - [3: Mean_shift:](#3 Mean_shift: )
 
 
