@@ -22,7 +22,10 @@ order: 10 # Lecture number for 2021
 
 
 ## 0: Intro to Segmentation
-
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/images/seg.png">
+  <div class="segmentation">!</div>
+</div>
 - Some vision applications require us to define boundaries and specific features(e.g shapes on an image, scales on fish images e.t.c) of visual data
 - this process of determining boundaries is called segmentation
 - for simpler images, segmentation can be easily achieved by simple means to seperate, for instance, the main pixel information such as intensity
@@ -37,7 +40,10 @@ order: 10 # Lecture number for 2021
 - each data point is then allocated a cluster closest to it and as such minimize euclidean distance
 
 \[begin{equation} \delta^{*} = argmin(frac{1}{N}\sum_{j=1}^{\N} \sum_{i=1}^{\k} \delta_{ij}(c_i-x_j)^{2}) \]
-
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/images/clustering_eq.png">
+  <div class="k means objective function"></div>
+</div>
 ###1-2 Algorithm
 1. initialize cluster centers C1, C2, C3,...Ck
 2. clasify each data point with its closest center
@@ -46,8 +52,8 @@ order: 10 # Lecture number for 2021
 5. repeat 1-4 until the each center is the same as its predecessor(convergence)
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/clustering/classify.png">
-  <div class="k means algorithm">!</div>
+  <img src="{{ site.baseurl }}/assets/images/method-k-means-steps-example.png">
+  <div class="k means algorithm"></div>
 </div>
 
 ###1-3 Issues
@@ -79,13 +85,18 @@ order: 10 # Lecture number for 2021
 -  maximum accuracy is achieved by assigning each data point to its own cluster.
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/clustering/choosingK.png">
-  <div class="k means algorithm">!</div>
+  <img src="{{ site.baseurl }}/assets/images/choosing k.png">
+  <div class="Choice of K"></div>
 </div>
 
 ##Mean Shift
 - Mean shift is very useful for clustering spatial information in addition to pixel intensity  
 - The mean shift algorithm seeks a mode or local maximum of density of a given distribution
+
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/images/choosing k.png">
+  <div class="Choice of K"></div>
+</div>
 
 1. Initialize random seed, and window W
 2. Calculate center of gravity of the window
@@ -93,12 +104,12 @@ order: 10 # Lecture number for 2021
 4. Repeat steps 2-3 until convergence 
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/clustering/meanshifT.png">
-  <div class="k means algorithm">!</div>
+  <img src="{{ site.baseurl }}/assets/images/meanshifT.png">
+  <div class="k means algorithm"></div>
 </div>
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/clustering/meanshift.png">
-  <div class="k means algorithm">!</div>
+  <div class="k means algorithm"></div>
 </div>
 
 ###Mean Shift Pros
