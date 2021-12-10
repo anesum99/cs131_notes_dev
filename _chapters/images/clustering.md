@@ -33,7 +33,7 @@ order: 10 # Lecture number for 2021
 - K-Means aims to minimize the variance in data in each of K optimum groupings
 - this is achieved by choosing centers to best reflect the data(pixel intensity) distribution on the image
 - each data point is then allocated a cluster closest to it and as such minimize euclidean distance
-- $$ \begin{equation} \label{eqn^1} c^{*}, \delta^{*} = frac{1}{N}  \[ \sum_{j=1}^{\N} \sum_{i=1}^{\k} \delta_{ij}(c_i-x_j)^{2} \]end{equation} $$
+- $$ \begin{equation} \label{eqn^1} \delta^{*} = frac{1}{N}  \[ \sum_{j=1}^{\N} \sum_{i=1}^{\k} \delta_{ij}(c_i-x_j)^{2} \]end{equation} $$
 - 
 - for simpler images, segmentation can be easily achieved by simple means to seperate, for instance, the main pixel information such as intensity
 - such grouping of data(visual in this case) into meaningful categories is called clustering
