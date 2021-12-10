@@ -13,12 +13,14 @@ order: 10 # Lecture number for 2021
 	- [1-2 Algorithm](#1-2-algorithm)
 	- [1-3 Issues](#1-3-issues)
 	- [1-4 Kmeans++](#1-4-Kmeans++)
-	- [1-5 Smoothing](#1-5-cluster-count-choice)
-	- [1-6 Cluster Count Choice](#1-6-cluster-count-choice)
-- [3 Mean_shift:](#3-Mean_shift)
-	- [2-1:](#3-1 )
-	- [2-2:](#3-2)
-	- [2-3:](#3-3)
+	- [1-5 Smoothing](#1-5-smoothing)
+	- [1-6 Cluster Count Choice](#1-6-pros-and-cons-for-k-means)
+	- [1-7 Cluster Count Choice](#1-7-cluster-count-choice)
+	
+- [2 Mean_shift:](#2-Mean_shift)
+	- [2-1:](#2-1-overview)
+	- [2-2:](#2-2-procedure)
+	- [2-3:](#3-3-speed-bump)
 
 
 ## 0: Intro to Segmentation
@@ -66,20 +68,22 @@ order: 10 # Lecture number for 2021
 - repeat the center updates
 - expected error is optimized at O(logK) 
 
-###Smoothing
+###1-5 Smoothing
 - pixels can be grouped on both pixel intensity and positional similarity basis 
 - this ensures spatial coherence in the clustering
-- Pros:
+-
+###1-6 Pros and Cons for K means
+Pros:
 	-Simple and fast
 	– onverges to a local minimum of the error function
 	– Available implementations (e.g., in Matlab)
--Cons:
+Cons:
 	–Need to pick K
 	–Sensitive to initialization
 	–Only finds “spherical” clusters
 	–Sensitive to outliers
 	
-###1-6 Cluster counts choice  
+###1-7 Cluster counts choice  
 - plot the objective function (sum of square distances) against successive values of K
 - the optimal choice strikes a balance between maximum compression of the data using a single cluster
 -  maximum accuracy is achieved by assigning each data point to its own cluster.
@@ -89,10 +93,11 @@ order: 10 # Lecture number for 2021
   <div class="Choice of K"></div>
 </div>
 
-##Mean Shift
+##2 Mean Shift
 - Mean shift is very useful for clustering spatial information in addition to pixel intensity  
 - The mean shift algorithm seeks a mode or local maximum of density of a given distribution
 
+###2-1 Overview
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/meanshifT.png">
   <div class="Mean shift idea"></div>
@@ -102,7 +107,7 @@ order: 10 # Lecture number for 2021
   <img src="{{ site.baseurl }}/assets/images/meanshff.png">
   <div class="Mean shift vector"></div>
 </div>
-
+###2-2 Procedure
 1. Initialize random seed, and window W
 2. Calculate center of gravity of the window
 3. Translate the search window center to the mean
@@ -114,17 +119,18 @@ order: 10 # Lecture number for 2021
   <div class="k means algorithm"></div>
 </div>
 
-###Mean Shift Pros
+###Mean Shift Pros and cons
+Pros:
 	– Does not assume spherical clusters
 	– Just a single parameter (window size)
 	– Finds variable number of modes
 	– Robust to outliers
-###Mean Shift Cons
+Cons:
 	– Output depends on window size
 	– Computationally expensive
 	– Does not scale well with dimension of feature space
 
-### Speedup
+###2-4 Speedup
 - use basin of attraction by assigning points within a given radius to end point of the radius closest to local mean
 - assign all points within each minor radius/circumference of the search path to the mode to reduce search points
 
