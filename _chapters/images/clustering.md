@@ -98,6 +98,11 @@ order: 10 # Lecture number for 2021
   <div class="Mean shift idea"></div>
 </div>
 
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/images/meanshff.png">
+  <div class="Mean shift vector"></div>
+</div>
+
 1. Initialize random seed, and window W
 2. Calculate center of gravity of the window
 3. Translate the search window center to the mean
