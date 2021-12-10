@@ -124,7 +124,7 @@ order: 10 # Lecture number for 2021
 - assign all points within each minor radius/circumference of the search path to the mode to reduce search points
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/images/basin.jpeg">
+  <img src="{{ site.baseurl }}/assets/images/basin.png">
   <div class="basin of attraction">!</div>
 </div>
 
