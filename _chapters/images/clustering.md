@@ -125,7 +125,7 @@ order: 10 # Lecture number for 2021
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/basin.jpeg">
-  <div class="k means algorithm">!</div>
+  <div class="basin of attraction">!</div>
 </div>
 
 
