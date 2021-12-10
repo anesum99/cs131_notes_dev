@@ -61,7 +61,7 @@ Sometimes you might want to write some mathematical equations, and LaTeX is a gr
 
 You can also apply LaTeX syntax to label your equations and refer to them later! Here's the equation:
 
-$$ \begin{equation} \label{your_label} a^2 = b^2 + c^2 + d^2 + e^2 \end{equation} $$
+$ \begin{equation} \label{your_label} a^2 = b^2 + c^2 + d^2 + e^2 \end{equation} $
 
 and here's a linked reference to it: \eqref{your_label}. For now, this configuration likes the \\"\\$\\$ equation stuff ... \\$\\$\\" syntax to have an empty line above and below it, but it displays the same anyway.
 
