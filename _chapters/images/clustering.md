@@ -94,8 +94,8 @@ order: 10 # Lecture number for 2021
 - The mean shift algorithm seeks a mode or local maximum of density of a given distribution
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/images/choosing k.png">
-  <div class="Choice of K"></div>
+  <img src="{{ site.baseurl }}/assets/images/meanshifT.png">
+  <div class="Mean shift idea"></div>
 </div>
 
 1. Initialize random seed, and window W
@@ -103,12 +103,9 @@ order: 10 # Lecture number for 2021
 3. Translate the search window center to the mean
 4. Repeat steps 2-3 until convergence 
 
+
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/images/meanshifT.png">
-  <div class="k means algorithm"></div>
-</div>
-<div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/clustering/meanshift.png">
+  <img src="{{ site.baseurl }}/assets/images/meanshift.png">
   <div class="k means algorithm"></div>
 </div>
 
@@ -127,7 +124,7 @@ order: 10 # Lecture number for 2021
 - assign all points within each minor radius/circumference of the search path to the mode to reduce search points
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/clustering/basin.png">
+  <img src="{{ site.baseurl }}/assets/images/basin.jpeg">
   <div class="k means algorithm">!</div>
 </div>
 
