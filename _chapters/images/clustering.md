@@ -10,13 +10,15 @@ order: 10 # Lecture number for 2021
 - [0 Intro to Segmentation](#0-Intro-to-Segmentation )
 - [1 K-Means](#1-K-Means)
 	- [1-1 Overview](#1-1-overview)
-	- [1-2 :](#1-2-)
-	- [1-3 :](#1-3-  )
-- [2 Kmeans++](#2-Kmeans++ )
-	- [2-1:](#2-1 )
-	- [2-2:](#2-2)
-	- [2-3:](#I2-3)
+	- [1-2 Algorithm](#1-2-algorithm)
+	- [1-3 Issues](#1-3-issues)
+	- [1-4 Kmeans++](#1-4-Kmeans++)
+	- [1-5 Smoothing](#1-5-cluster-count-choice)
+	- [1-6 Cluster Count Choice](#1-6-cluster-count-choice)
 - [3 Mean_shift:](#3-Mean_shift)
+	- [2-1:](#3-1 )
+	- [2-2:](#3-2)
+	- [2-3:](#3-3)
 
 
 ## 0: Intro to Segmentation
@@ -34,74 +36,90 @@ order: 10 # Lecture number for 2021
 - this is achieved by choosing centers to best reflect the data(pixel intensity) distribution on the image
 - each data point is then allocated a cluster closest to it and as such minimize euclidean distance
 
-$$  \begin{equation} \delta^{*} = frac{1}{N}  \sum_{j=1}^{\N} \sum_{i=1}^{\k} \delta_{ij}(c_i-x_j)^{2} \end{equation} $$
-$$ \begin{equation} \label{your_label} a^2 = b^2 + c^2 + d^2 + e^2 \end{equation} $$
+\[begin{equation} \delta^{*} = argmin(frac{1}{N}\sum_{j=1}^{\N} \sum_{i=1}^{\k} \delta_{ij}(c_i-x_j)^{2}) \]
 
-- for simpler images, segmentation can be easily achieved by simple means to seperate, for instance, the main pixel information such as intensity
-- such grouping of data(visual in this case) into meaningful categories is called clustering
-- manually, this is nearly impossible and too tedious  with more complex images
-- we therefore need a faster and more efficient way to achieve the same.
-
-<a name='Subtopic 1-1'></a>
-### Subtopic 1-1
-You might want to include images in your notes, since Computer Vision as a field is blessed with tons of cool visualizations. Here's an example from the CS 231N notes page we included as a reference for you:
+###1-2 Algorithm
+1. initialize cluster centers C1, C2, C3,...Ck
+2. clasify each data point with its closest center
+3. update cluster centers as means of data points
+4. update point classifications/allotment to centers
+5. repeat 1-4 until the each center is the same as its predecessor(convergence)
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/examples/classify.png">
-  <div class="figcaption">Put your informative caption here! If you really want to mess around with the classes in this div container then feel free, but inserting images just like this should work great!</div>
+  <img src="{{ site.baseurl }}/assets/clustering/classify.png">
+  <div class="k means algorithm">!</div>
 </div>
 
-<a name='Subtopic 1-2'></a>
-### Subtopic 1-2
-Sometimes you might want to insert some code snippets into your notes. As an example, here's a snippet of python code taken from the CS 231N notes:
-```python
-Xtr, Ytr, Xte, Yte = load_CIFAR10('data/cifar10/') # a magic function we provide
-# flatten out all images to be one-dimensional
-Xtr_rows = Xtr.reshape(Xtr.shape[0], 32 * 32 * 3) # Xtr_rows becomes 50000 x 3072
-Xte_rows = Xte.reshape(Xte.shape[0], 32 * 32 * 3) # Xte_rows becomes 10000 x 3072
-```
+###1-3 Issues
+- convergence could occur arbitrarily and give a non-optimum local minima
+- such grouping of data(visual in this case) into meaningful categories is called clustering
+###1-4 K-Means++
+- an ugrade to K-Means to address bad local minima
+- randomly choose first center
+- update new centers proportionally with mean square distance(from centre) probability 
+- repeat the center updates
+- expected error is optimized at O(logK) 
 
-<a name='Subtopic 1-3'></a>
-### Subtopic 1-3
-Sometimes you might want to write some mathematical equations, and LaTeX is a great tool for that! You can write an inline equation like this \\( a^2 = b^2 \\), or you can display an equation on its own line like this! \\[ a^2 = b^2 + c^2 \\]
+###Smoothing
+- pixels can be grouped on both pixel intensity and positional similarity basis 
+- this ensures spatial coherence in the clustering
+- Pros:
+	-Simple and fast
+	– onverges to a local minimum of the error function
+	– Available implementations (e.g., in Matlab)
+-Cons:
+	–Need to pick K
+	–Sensitive to initialization
+	–Only finds “spherical” clusters
+	–Sensitive to outliers
+	
+###1-6 Cluster counts choice  
+- plot the objective function (sum of square distances) against successive values of K
+- the optimal choice strikes a balance between maximum compression of the data using a single cluster
+-  maximum accuracy is achieved by assigning each data point to its own cluster.
 
-You can also apply LaTeX syntax to label your equations and refer to them later! Here's the equation:
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/clustering/choosingK.png">
+  <div class="k means algorithm">!</div>
+</div>
 
-$$ \begin{equation} \label{your_label} a^2 = b^2 + c^2 + d^2 + e^2 \end{equation} $$
+##Mean Shift
+- Mean shift is very useful for clustering spatial information in addition to pixel intensity  
+- The mean shift algorithm seeks a mode or local maximum of density of a given distribution
 
-and here's a linked reference to it: \eqref{your_label}. For now, this configuration likes the \\"\\$\\$ equation stuff ... \\$\\$\\" syntax to have an empty line above and below it, but it displays the same anyway.
+1. Initialize random seed, and window W
+2. Calculate center of gravity of the window
+3. Translate the search window center to the mean
+4. Repeat steps 2-3 until convergence 
 
-**For a guide on LaTeX syntax and how to write mathematical equations and formulas with it, check out [this link](https://www.overleaf.com/learn/latex/mathematical_expressions)** 
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/clustering/meanshifT.png">
+  <div class="k means algorithm">!</div>
+</div>
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/clustering/meanshift.png">
+  <div class="k means algorithm">!</div>
+</div>
 
-**Here's a short guide on how to use the basics of LaTeX**
-- You've seen above the syntax to start and end an equation, so now let's work on what you fill in the middle
-- You can make variables and expressions **bold** in equations too: \\(\mathbf{x} + y\\)
-- Superscripts and subscripts are easy: use the ^ and _ symbol and bound your super/sub script by {} if it's more than one character. For example: \\(e^{-x+10}\\)
-- Greek letters are also simple, use the \ character with their written name with optional capitalization, such as alpha or Alpha. For example: \\(\alpha + \beta + \gamma + \delta + \Gamma + \Delta\\). Not all capital greek letters work like this, but you can search online for solutions if this trick fails or reach out to the CA's. In general the \ character in LaTeX is the gateway to all kinds of special characters and functionalities.
-- Sums and Products are really useful in Latex. You can use both superscripts and subscripts to mark the bounds: \\(\log(\prod_{i=0}^{2n}i^2) = \sum_{i=0}^{2n}\log (i^2)\\)
-- Another useful trick is to write out a matrix or a vector in LaTex. There's a lot of customization you can do with this, so check out this [page](https://www.overleaf.com/learn/latex/Matrices) for more details. Here's some examples in our Markdown environment: 
+###Mean Shift Pros
+	– Does not assume spherical clusters
+	– Just a single parameter (window size)
+	– Finds variable number of modes
+	– Robust to outliers
+###Mean Shift Cons
+	– Output depends on window size
+	– Computationally expensive
+	– Does not scale well with dimension of feature space
 
+### Speedup
+- use basin of attraction by assigning points within a given radius to end point of the radius closest to local mean
+- assign all points within each minor radius/circumference of the search path to the mode to reduce search points
 
-$$\begin{bmatrix}
-1 & 2 & 3\\
-a & b & c
-\end{bmatrix}$$
-
-$$\begin{bmatrix}
-1\\
-2\\
-3\\
-\end{bmatrix}$$
-
-$$\begin{bmatrix}
-1 & 2 & 3\\
-\end{bmatrix}$$
-
-As with the labelled equations, it makes a difference whether the lines above and below the equation are blank, so keep that in mind while debugging! 
-
-
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/clustering/basin.png">
+  <div class="k means algorithm">!</div>
+</div>
 
 
-<a name='Topic 2'></a>
-## Second Big Topic
-This should give you the primary tools to develop your notes. Check out the [markdown quick reference](https://wordpress.com/support/markdown-quick-reference/) for any further Markdown functionality that you may find useful, and reach out to the teaching team on Piazza if you have any questions about how to create your lecture notes
+
+
