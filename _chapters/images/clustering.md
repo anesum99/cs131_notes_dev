@@ -17,10 +17,10 @@ order: 10 # Lecture number for 2021
 	- [1-6 Cluster Count Choice](#1-6-pros-and-cons-for-k-means)
 	- [1-7 Cluster Count Choice](#1-7-cluster-count-choice)
 	
-- [2 Mean_shift:](#2-Mean_shift)
-	- [2-1:](#2-1-overview)
-	- [2-2:](#2-2-procedure)
-	- [2-3:](#3-3-speed-bump)
+- [2 Mean_shift](#2-Mean-shift)
+	- [2-1 Overview](#2-1-overview)
+	- [2-2 Procedure](#2-2-procedure)
+	- [2-3 Speed Bump](#3-3-speed-bump)
 
 
 ## 0: Intro to Segmentation
