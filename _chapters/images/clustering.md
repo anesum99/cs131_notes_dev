@@ -8,8 +8,8 @@ order: 10 # Lecture number for 2021
 
 
 - [0 Intro to Segmentation](#0-Intro-to-Segmentation )
-	- [1: K-Means](#1-K-Means )
-	- [1-1 :](#1-1- )
+- [1 K-Means](#1-K-Means)
+	- [1-1 Overview](#1-1-overview)
 	- [1-2 :](#1-2-)
 	- [1-3 :](#1-3-  )
 - [2 Kmeans++](#2-Kmeans++ )
@@ -28,19 +28,17 @@ order: 10 # Lecture number for 2021
 - manually, this is nearly impossible and too tedious  with more complex images
 - we therefore need a faster and more efficient way to achieve the same.
 
-	
-Here you can start to talk about the first topic of your notes. You can bold text like **this**, or italicize text like *this*. If you want to make a numbered list it's as easy as
-1.  
-2. 
-3. 
-
-- Bullet
-- points
-- are
-- similar 
-
-For a more detailed cheatsheet on the most important functionality of Markdown, check out this link https://wordpress.com/support/markdown-quick-reference/, which you can format in Markdown with your own [link title](https://wordpress.com/support/markdown-quick-reference/)
-
+## 1 K-Means
+###1-1 Overview
+- K-Means aims to minimize the variance in data in each of K optimum groupings
+- this is achieved by choosing centers to best reflect the data(pixel intensity) distribution on the image
+- each data point is then allocated a cluster closest to it and as such minimize euclidean distance
+- $$ \begin{equation} \label{eqn^1} c^*, \delta^* = frac{1/N} + c^2 + d^2 + e^2 \end{equation} $$
+- 
+- for simpler images, segmentation can be easily achieved by simple means to seperate, for instance, the main pixel information such as intensity
+- such grouping of data(visual in this case) into meaningful categories is called clustering
+- manually, this is nearly impossible and too tedious  with more complex images
+- we therefore need a faster and more efficient way to achieve the same.
 
 <a name='Subtopic 1-1'></a>
 ### Subtopic 1-1
